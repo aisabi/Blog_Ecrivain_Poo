@@ -1,0 +1,32 @@
+
+body { background-color:#DDD; }
+      [class*="col"] { margin-bottom: 20px; }
+
+img { width: 100%;
+  height: 50%
+       }
+
+html{height:100%;}
+
+.navbar-inner {
+    background:transparent;
+}
+
+body
+{
+  background: silver url(../images/pic2.jpeg) top center no-repeat;
+  background-size: cover; /* l'image va COUVRIR toute la surface */
+  height: 100%;
+  width:100%;
+  position: relative;
+  bottom: 0;
+}
+
+footer{
+background:#ccc;
+position:absolute;
+bottom:0;
+width:100%;
+padding-top:50px;
+height:50px;
+}

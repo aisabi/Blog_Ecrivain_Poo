@@ -6,18 +6,17 @@ class Episode {
     protected $titre;
     protected $contenu;
 
-
-public function hydrate(Array $values)
-    {
-        foreach ($values as $key=>$value)
+    public function hydrate(Array $values)
         {
-            $method = 'set' . ucfirst($key);
-            if (method_exists($this, $method))
+            foreach ($values as $key=>$value)
             {
-                $this->$method($value);
+                $method = 'set' . ucfirst($key);
+                if (method_exists($this, $method))
+                {
+                    $this->$method($value);
+                }
             }
         }
-    }
 
 //id, auteur,titre, contenu FROM news 
 
@@ -40,15 +39,6 @@ public function hydrate(Array $values)
     }
     public function getTitre() {
         return $this->titre;
-    }
-
-    public function setDescription($description) {
-        $this->description = $description;
-    }
-
-    public function getDescription() {
-        //return $this->description;
-        echo $this->description;
     }
 
 

@@ -8,7 +8,20 @@ class Commentaire {
     protected $date_commentaire;
     protected $id_billet;
 
-    public function hydrate(Array $values)
+
+
+ /*function __construct($blabla){
+	$this->commentaire = $blabla;
+}*/
+
+
+
+
+public function get_date_commentaire(){
+	return $this->date_commentaire;
+}
+
+   /* public function hydrate(Array $values)
         {
             foreach ($values as $key=>$value)
             {
@@ -18,7 +31,7 @@ class Commentaire {
                     $this->$method($value);
                 }
             }
-        }
+        } */
  //id 	id_billet 	auteur 	commentaire 	date_commentaire 	signaler_com
  //id, DATE_FORMAT(date_commentaire, \'%d/%m/%Y à %Hh%imin%ss\') AS date_commentaire_fr,auteur, commentaire 
 //id, auteur,titre, contenu FROM news 
@@ -50,7 +63,7 @@ class Commentaire {
 
     public function getDate_commentaire() {
         //return $this->description;
-        echo $this->Date_commentaire;
+        return $this->date_commentaire;
     }
 
 
@@ -63,3 +76,5 @@ class Commentaire {
     }
 
 }
+
+

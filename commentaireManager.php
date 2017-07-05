@@ -23,27 +23,26 @@ class CommentaireManager {
     //$bdd = getBdd();
     $bdd = $this->bdd;
     
-    $commentaires = $bdd->prepare('SELECT id, DATE_FORMAT(date_commentaire, \'%d/%m/%Y à %Hh%imin%ss\') AS date_commentaire_fr,auteur, commentaire FROM commentaires WHERE id_billet= ? ORDER BY date_commentaire');
-    $commentaires->execute(array($idBillet));
+    $request = $bdd->prepare('SELECT id, DATE_FORMAT(date_commentaire, \'%d/%m/%Y à %Hh%imin%ss\') AS date_commentaire_fr,auteur, commentaire FROM commentaires WHERE id_billet= ? ORDER BY date_commentaire');
+    $request->execute(array($idBillet));
    // $donnees = $commentaires->fetchAll();
    
     //echo '<pre>'; print_r($donnees);
   
-   while ($donnees = $commentaires->fetchAll()){
+   while ($result = $request->fetch()){
     //$donnees = $commentaires->fetchAll();
-    echo '<pre>'; print_r($donnees);
-   //   $commentaire = new Commentaire();
-    //  $commentaire->setId($donnees['id']); 
-    //  $commentaire->setDate_commentaire($donnees['date_commentaire_fr']);
-    //  $commentaire->setAuteur($donnees['auteur']);
-   //   $commentaire->setCommentaire($donnees['commentaire']);
+   // echo '<pre>'; print_r($result);
+    $commentaire = new Commentaire();
+     $commentaire->setId($result['id']); 
+     $commentaire->setDate_commentaire($result['date_commentaire_fr']);
+     $commentaire->setAuteur($result['auteur']);
+     $commentaire->setCommentaire($result['commentaire']);
     
-    //$commentaires[] = $commentaire;
+    $commentaires[] = $commentaire;
 
-  //}
-    // return $commentaire; 
-}
-
+  }
+if(!isset($commentaires)) return null;
+     return $commentaires; 
 }
 
 
@@ -53,7 +52,7 @@ public function getAllCommentaires(){
   $req = $bdd->prepare($requete);
   $req->execute();
   $donnees = $req->fetch();
-  echo 'données'.'<pre>';print_r($donnees);
+  //echo 'données'.'<pre>';print_r($donnees);
   
   while($donnees = $req->fetch(PDO::FETCH_ASSOC)) {
 // création d'une instance d'objet épisode
@@ -70,5 +69,46 @@ public function getAllCommentaires(){
 
  }
 
+/* public function ajoutCommentaire(Commentaire $comment){
+echo 'ça marche';
+$bdd = $this->bdd;
+        $req = $bdd->prepare("INSERT INTO news (auteur, titre,contenu) VALUES (:auteur, :titre, :contenu)");
+        $req->execute(
+            array(
+                'auteur'       => $episode->getAuteur(),
+                'titre' => $episode->getTitre(),
+                'contenu'      => $episode->getContenu()
+            )
+        );
+        return $this;
+ }*/
+
+
+ public function ajoutCommentaire(Commentaire $comment){
+echo 'ça marche';
+/*$bdd = $this->bdd;
+        $req = $bdd->prepare('INSERT INTO commentaires (id_billet,auteur, commentaire) VALUES (:id_billet, :auteur, :commentaire)');
+        $req->execute(
+            array(
+                'id_billet'   => $commentaire->getId_billet(),
+                'auteur'      => $commentaire->getAuteur(),
+                'commentaire' => $commentaire->getCommentaire(),
+                //'contenu'      => $commentaire->getContenu()
+            )
+        );
+        return $this;*/
+
+        $bdd = $this->bdd;
+        $req = $bdd->prepare("INSERT INTO commentaires (id_billet,auteur, date_commentaire,commentaire) VALUES (:id_billet,:auteur, NOW(), :commentaire)");
+        $req->execute(
+            array(
+              'id_billet'       => $comment->getId_billet(),
+                'auteur'       => $comment->getAuteur(),
+              //  'titre' => $comment->getTitre(),
+                'commentaire'      => $comment->getCommentaire()
+            )
+        );
+        return $this;
+ }
 
 }

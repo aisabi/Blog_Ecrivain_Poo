@@ -14,14 +14,7 @@ class Commentaire {
 	$this->commentaire = $blabla;
 }*/
 
-
-
-
-public function get_date_commentaire(){
-	return $this->date_commentaire;
-}
-
-   /* public function hydrate(Array $values)
+    public function hydrate(Array $values)
         {
             foreach ($values as $key=>$value)
             {
@@ -31,7 +24,12 @@ public function get_date_commentaire(){
                     $this->$method($value);
                 }
             }
-        } */
+        } 
+
+public function get_date_commentaire(){
+	return $this->date_commentaire;
+}
+
  //id 	id_billet 	auteur 	commentaire 	date_commentaire 	signaler_com
  //id, DATE_FORMAT(date_commentaire, \'%d/%m/%Y à %Hh%imin%ss\') AS date_commentaire_fr,auteur, commentaire 
 //id, auteur,titre, contenu FROM news 

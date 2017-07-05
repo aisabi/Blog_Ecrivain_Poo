@@ -28,4 +28,28 @@ $datehisto = new Commentaire();
 $datehisto->setDate_commentaire("23-05-2017");
 echo $datehisto->getDate_commentaire();
 
+//---------EXEMPLE FOREACH DANS UN TABLEAU
+?>
+<section id="list_episodes">
+  <table class="table">
+      <tr>    
+        <th>Id1</th>
+        <th>Auteur</th>
+        <th>Titre</th>
+        <th>Contenu</th>
+      </tr>
+<?//ici le $commentaires avec SSS est la variable $commentaires  = $manager->getCommentaires($idBillet); cette variable est récupérer via le manager  ?>
+      <?php foreach ($commentaires as $com): ?>
+      <tr>
+        <td><h3><?php echo $com->getId();?></h3></td>
+        <td><h3><?php echo $com->getAuteur();?></h3></td>
+        <td><h3><?php echo $com->getDate_commentaire(); ?></h3></td>
+        <td><p><?php echo substr ($com->getCommentaire(),0,2000).'...'; ?></p></td>
+      </tr>
+      <?php endforeach;?>
 
+
+
+
+
+<!-- <input type="hidden" name="id" value="<?=// $_GET['billeto'] ?>" />   -->

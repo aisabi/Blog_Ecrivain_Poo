@@ -1,7 +1,6 @@
 <?php 
   include_once ('_head_episodes.php');
   include_once("_menus.php"); ?>
-
     <header class="page-header">
         <h1>Jean Forteroche, acteur et écrivain</h1>
     </header>
@@ -16,6 +15,7 @@
             <small class="pull-right">Jean Forteroche</small><br>
             </blockquote>
         </div>
-      </section>     
+      </section>    
+       
     </div>  
     <?php include ("_pied_de_page.php");?>

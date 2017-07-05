@@ -1,11 +1,24 @@
+<?php 
+session_start();
+      if(isset($_SESSION["admin"])){
+                echo "Bonjour ".$_SESSION["login"]." et bienvenue sur la page d'Administration<br>";
+                //echo "<a href=\"logout.php\">DeconnexionT</a>";
+                } else {
+          header("Location:index.php");
+          } 
+?>
+
 bonjour je suis l'administrateur ! 
 
- <?php   include_once ('_head_admin.php');
+ <?php  include_once ('_head_admin.php');
  include_once ('episode.php');
  include_once ('episodeManager.php');
 $manager = new EpisodeManager();
-$episodes  = $manager->getListe();
+$episodes  = $manager->getListe(); 
 ?>
+
+<p style="font-weight:bold; margin-left:3em;margin-top: 1em;"><a button type="button" class="btn btn-warning active" href='logout.php'>Déconnexion Administration</a></p>
+
   <p style="font-weight:bold; margin-left:3em;margin-top: 1em;"><a button type="button" class="btn btn-primary active" href='.'>Accéder à l'accueil du site</a></p>
 <!-- Formulaire d'ajout d'un article-->
 <form action="ajoutEpisode.php" method="post">

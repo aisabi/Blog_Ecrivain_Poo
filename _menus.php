@@ -9,7 +9,7 @@
     
       <form class="navbar-form navbar-right inline-form">
         <div class="form-group">
-        <a button type="submit" class="btn btn-primary btn-sm" href='admin.php'><span class="glyphicon glyphicon-eye-open"> </span>Administration</a>
+        <a button type="submit" class="btn btn-primary btn-sm" href='entree.php'><span class="glyphicon glyphicon-eye-open"> </span>Administration</a>
         </div>
       </form>
     </div>

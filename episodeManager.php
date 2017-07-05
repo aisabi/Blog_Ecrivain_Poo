@@ -14,7 +14,7 @@ class EpisodeManager {
  //liste épisodes
   public function getEpisodes(){ 
 	$bdd = $this->bdd;
-	$requete = "SELECT * FROM news ORDER BY id desc LIMIT 0, 5";//id, auteur, titre, contenu 
+	$requete = "SELECT * FROM news ORDER BY id desc LIMIT 0, 10";//id, auteur, titre, contenu 
 	$req = $bdd->prepare($requete);
 	$req->execute();
   //$new = $req->fetch();
@@ -78,7 +78,7 @@ class EpisodeManager {
  }
 //paramètres : la classe Episode et la variable $episode car = new Episode
  public function ajout(Episode $episode){
-//echo 'ça marche';
+echo 'ça marche';
 
 $bdd = $this->bdd;
         $req = $bdd->prepare("INSERT INTO news (auteur, titre,contenu) VALUES (:auteur, :titre, :contenu)");
